@@ -1,0 +1,18 @@
+-- CreateTable
+PRAGMA defer_foreign_keys = on;
+CREATE TABLE "A" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "bId" INTEGER NOT NULL,
+    CONSTRAINT "A_bId_fkey" FOREIGN KEY ("bId") REFERENCES "B" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "B" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT
+);
+
+-- Insert
+INSERT INTO "B" ("id") VALUES (1);
+INSERT INTO "A" ("bId") VALUES (1);
+
+PRAGMA defer_foreign_keys = on;
